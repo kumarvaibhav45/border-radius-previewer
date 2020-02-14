@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [demoWidth, setDemoWidth] = useState(400);
-  const [demoHeight, setDemoHeight] = useState(400);
+  const [demoWidth, setDemoWidth] = useState(500);
+  const [demoHeight, setDemoHeight] = useState(500);
   const [customSize, setCustomSize] = useState(false);
   const [topLeft, setTopLeft] = useState('25');
   const [topRight, setTopRight] = useState('75');
@@ -187,8 +187,8 @@ function App() {
             name='custom-size'
             checked={customSize}
             onChange={() => {
-              setDemoWidth(400);
-              setDemoHeight(400);
+              setDemoWidth(500);
+              setDemoHeight(500);
               setCustomSize(prevState => !prevState);
             }}
           />
@@ -202,7 +202,7 @@ function App() {
               min='5'
               max='2000'
               onChange={({ target: { value } }) => {
-                if (value < 2001 && value > 4) {
+                if (value > 0) {
                   setDemoWidth(value);
                   document.getElementById('demo-cont').style.width =
                     value + 'px';
@@ -216,7 +216,7 @@ function App() {
               max='2000'
               value={demoHeight}
               onChange={({ target: { value } }) => {
-                if (value < 2001 && value > 4) {
+                if (value > 0) {
                   setDemoHeight(value);
                   document.getElementById('demo-cont').style.height =
                     value + 'px';
