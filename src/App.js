@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
+import './stylesheets/index.scss';
+import Form from './components/SizeHandlingForm/Form';
+import ExportContainer from './components/ExportContainer/ExportContainer';
+import DemoContainer from './components/DemoContainer/DemoContainer';
 
 function App() {
   const [demoWidth, setDemoWidth] = useState(500);
@@ -10,222 +14,76 @@ function App() {
   const [leftBottom, setLeftBottom] = useState('25');
   const [bottomLeft, setBottomLeft] = useState('25');
   const [bottomRight, setBottomRight] = useState('75');
-  const [RightTop, setRightTop] = useState('75');
+  const [rightTop, setRightTop] = useState('75');
   const [rightBottom, setRightBottom] = useState('25');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.getElementById(
       'demo-cont'
     ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
       bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-      RightTop}% ${rightBottom}% ${leftBottom}%`;
+      rightTop}% ${rightBottom}% ${leftBottom}%`;
   }, [
     topLeft,
     topRight,
     bottomRight,
     bottomLeft,
     leftTop,
-    RightTop,
+    rightTop,
     rightBottom,
     leftBottom
   ]);
+  useLayoutEffect(() => {
+    document.documentElement.style.setProperty(
+      '--container-height',
+      demoHeight + 'px'
+    );
+    document.documentElement.style.setProperty(
+      '--container-width',
+      demoWidth + 'px'
+    );
+  }, [demoHeight, demoWidth]);
 
   return (
     <div className='App'>
       <h1>border radius previewer</h1>
-      <div className='demo-container'>
-        <div
-          className='demo'
-          id='demo-cont'
-          style={{ width: demoWidth, height: demoHeight }}
-        ></div>
-        <input
-          type='range'
-          id='slider-top-left'
-          className='slider horiz-slider'
-          value={topLeft}
-          onChange={({ target }) => {
-            setTopLeft(target.value);
-            document.getElementById('demo-cont').style.borderRadius = `${
-              target.value
-            }% ${100 - topRight}% ${100 - bottomRight}% ${bottomLeft}%/ ${100 -
-              leftTop}% ${100 - RightTop}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-top-right'
-          className='slider horiz-slider'
-          value={topRight}
-          onChange={({ target: { value } }) => {
-            setTopRight(value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - value}% ${100 -
-              bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-              RightTop}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-bottom-left'
-          className='slider  horiz-slider'
-          value={bottomLeft}
-          onChange={({ target }) => {
-            setBottomLeft(target.value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              bottomRight}% ${target.value}%/ ${100 - leftTop}% ${100 -
-              RightTop}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-bottom-right'
-          className='slider  horiz-slider'
-          value={bottomRight}
-          onChange={({ target: { value } }) => {
-            setBottomRight(value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              value}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-              RightTop}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-left-top'
-          orient='vertical'
-          step='1'
-          className='slider vert-slider'
-          value={leftTop}
-          onChange={({ target: { value } }) => {
-            setLeftTop(value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              bottomRight}% ${bottomLeft}%/ ${100 - value}% ${100 -
-              RightTop}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-left-bottom'
-          orient='vertical'
-          className='slider vert-slider'
-          value={leftBottom}
-          onChange={({ target: { value } }) => {
-            setLeftBottom(value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-              RightTop}% ${rightBottom}% ${100 - value}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-right-top'
-          orient='vertical'
-          className='slider vert-slider'
-          value={RightTop}
-          onChange={({ target: { value } }) => {
-            setRightTop(value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-              value}% ${rightBottom}% ${leftBottom}%`;
-          }}
-        />
-        <input
-          type='range'
-          id='slider-right-bottom'
-          orient='vertical'
-          className='slider vert-slider'
-          value={rightBottom}
-          onChange={({ target }) => {
-            setRightBottom(target.value);
-            document.getElementById(
-              'demo-cont'
-            ).style.borderRadius = `${topLeft}% ${100 - topRight}% ${100 -
-              bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-              RightTop}% ${target.value}% ${leftBottom}%`;
-          }}
-        />
-      </div>
-      <div className='export-container'>
-        <div id='code'>{`${topLeft}% ${100 - topRight}% ${100 -
-          bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-          RightTop}% ${rightBottom}% ${leftBottom}%`}</div>
-        <button
-          id='copy-btn'
-          onClick={() => {
-            navigator.clipboard.writeText(
-              `border-radius: ${topLeft}% ${100 - topRight}% ${100 -
-                bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
-                RightTop}% ${rightBottom}% ${leftBottom}%;`
-            );
-            document.getElementById('copy-btn').innerHTML = 'copied';
-            setTimeout(() => {
-              document.getElementById('copy-btn').innerHTML = 'copy';
-            }, 4000);
-          }}
-        >
-          copy
-        </button>
-      </div>
+      <DemoContainer
+        topLeft={topLeft}
+        topRight={topRight}
+        bottomRight={bottomRight}
+        bottomLeft={bottomLeft}
+        leftTop={leftTop}
+        rightTop={rightTop}
+        rightBottom={rightBottom}
+        leftBottom={leftBottom}
+        setTopLeft={setTopLeft}
+        setTopRight={setTopRight}
+        setBottomRight={setBottomRight}
+        setBottomLeft={setBottomLeft}
+        setLeftTop={setLeftTop}
+        setRightTop={setRightTop}
+        setRightBottom={setRightBottom}
+        setLeftBottom={setLeftBottom}
+      />
+      <ExportContainer
+        topLeft={topLeft}
+        topRight={topRight}
+        bottomRight={bottomRight}
+        bottomLeft={bottomLeft}
+        leftTop={leftTop}
+        rightTop={rightTop}
+        rightBottom={rightBottom}
+        leftBottom={leftBottom}
+      />
 
-      <div className='form'>
-        <div className='size-control'>
-          <label htmlFor='custom-size'>custom size :</label>
-          <input
-            type='checkbox'
-            className='switch'
-            name='custom-size'
-            checked={customSize}
-            onChange={() => {
-              setDemoWidth(500);
-              setDemoHeight(500);
-              setCustomSize(prevState => !prevState);
-            }}
-          />
-        </div>
-        {customSize && (
-          <div className='demo-size'>
-            <label>width :</label>
-            <input
-              type='number'
-              value={demoWidth}
-              min='5'
-              max='2000'
-              onChange={({ target: { value } }) => {
-                if (value > 0) {
-                  setDemoWidth(value);
-                  document.getElementById('demo-cont').style.width =
-                    value + 'px';
-                }
-              }}
-            />
-            <label>height :</label>
-            <input
-              type='number'
-              min='5'
-              max='2000'
-              value={demoHeight}
-              onChange={({ target: { value } }) => {
-                if (value > 0) {
-                  setDemoHeight(value);
-                  document.getElementById('demo-cont').style.height =
-                    value + 'px';
-                }
-              }}
-            />
-          </div>
-        )}
-      </div>
+      <Form
+        customSize={customSize}
+        setDemoWidth={setDemoWidth}
+        setDemoHeight={setDemoHeight}
+        setCustomSize={setCustomSize}
+        demoHeight={demoHeight}
+        demoWidth={demoWidth}
+      />
     </div>
   );
 }

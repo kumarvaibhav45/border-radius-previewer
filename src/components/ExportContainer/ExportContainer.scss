@@ -1,0 +1,38 @@
+@import '../../stylesheets/variables.scss';
+
+.export-container {
+  margin-top: 60px;
+  display: flex;
+}
+#code {
+  padding: 1rem 2rem;
+  background-color: #eee;
+  border: 5px double #444;
+  font-size: 1.2rem;
+  color: $body-bg-color;
+}
+.export-container button {
+  cursor: pointer;
+  margin-left: 2rem;
+  border: none;
+  outline: none;
+  background-color: $button-bg-color;
+  color: $selection-fg-color;
+  border-radius: 4px;
+  text-transform: capitalize;
+  width: 100px;
+  height: 60px;
+  font-size: 1.4rem;
+  transition: all 400ms;
+}
+.export-container button:hover {
+  background-color: $border-tl-color;
+  color: $body-bg-color;
+  font-size: 1.5rem;
+}
+
+.export-container button:focus,
+.export-container button::-moz-focus-inner {
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,30 @@
+@import '../../stylesheets/variables.scss';
+
+.demo-container {
+  position: relative;
+  padding: 0;
+  width: auto;
+  height: auto;
+  border: 1.5px dashed #eee;
+}
+
+.demo {
+  width: var(--container-width);
+  height: var(--container-height);
+}
+
+.demo {
+  background-color: $button-bg-color;
+  background: linear-gradient(
+      -40deg,
+      $border-br-color 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(0, 255, 255, 0) 60%,
+      $border-tl-color 100%
+    ),
+    linear-gradient(60deg, $border-bl-color 0%, $border-tr-color 100%);
+  box-shadow: -50px 50px 10px rgba(0, 0, 0, 0.4);
+}
+.demo-size {
+  margin: 20px auto;
+}
