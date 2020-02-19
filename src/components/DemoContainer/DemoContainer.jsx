@@ -1,67 +1,75 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Slider from '../Slider/Slider';
 import './DemoContainer.scss';
+import { Context } from '../../Context';
 
-const DemoContainer = ({
-  topLeft,
-  topRight,
-  bottomRight,
-  bottomLeft,
-  leftTop,
-  rightTop,
-  rightBottom,
-  leftBottom,
-  setTopLeft,
-  setTopRight,
-  setLeftTop,
-  setLeftBottom,
-  setBottomLeft,
-  setBottomRight,
-  setRightTop,
-  setRightBottom
-}) => {
+const DemoContainer = () => {
+  const [
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    topLeft,
+    setTopLeft,
+    topRight,
+    setTopRight,
+    leftTop,
+    setLeftTop,
+    leftBottom,
+    setLeftBottom,
+    bottomLeft,
+    setBottomLeft,
+    bottomRight,
+    setBottomRight,
+    rightTop,
+    setRightTop,
+    rightBottom,
+    setRightBottom
+  ] = useContext(Context);
   return (
     <div className='demo-container'>
       <div className='demo' id='demo-cont'></div>
       <Slider
         id='slider-top-left'
-        radiusValue={topLeft}
-        setRadiusValue={setTopLeft}
+        sliderValue={topLeft}
+        setSliderValue={setTopLeft}
       />
       <Slider
         id='slider-top-right'
-        radiusValue={topRight}
-        setRadiusValue={setTopRight}
+        sliderValue={topRight}
+        setSliderValue={setTopRight}
       />
       <Slider
         id='slider-bottom-left'
-        radiusValue={bottomLeft}
-        setRadiusValue={setBottomLeft}
+        sliderValue={bottomLeft}
+        setSliderValue={setBottomLeft}
       />
       <Slider
         id='slider-bottom-right'
-        radiusValue={bottomRight}
-        setRadiusValue={setBottomRight}
+        sliderValue={bottomRight}
+        setSliderValue={setBottomRight}
       />
       <Slider
         id='slider-left-top'
-        radiusValue={leftTop}
-        setRadiusValue={setLeftTop}
+        sliderValue={leftTop}
+        setSliderValue={setLeftTop}
       />
       <Slider
         id='slider-left-bottom'
-        radiusValue={leftBottom}
-        setRadiusValue={setLeftBottom}
+        sliderValue={leftBottom}
+        setSliderValue={setLeftBottom}
       />
       <Slider
         id='slider-right-top'
-        radiusValue={rightTop}
-        setRadiusValue={setRightTop}
+        sliderValue={rightTop}
+        setSliderValue={setRightTop}
       />
       <Slider
         id='slider-right-bottom'
-        radiusValue={rightBottom}
-        setRadiusValue={setRightBottom}
+        sliderValue={rightBottom}
+        setSliderValue={setRightBottom}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import './InputForm.scss';
 
 const InputForm = ({ title, demo, setDemo }) => {
+  
   return (
     <>
       <label htmlFor={title}>{title} :</label>

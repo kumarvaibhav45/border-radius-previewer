@@ -1,21 +1,34 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext } from 'react';
 import './stylesheets/index.scss';
 import Form from './components/SizeHandlingForm/Form';
 import ExportContainer from './components/ExportContainer/ExportContainer';
 import DemoContainer from './components/DemoContainer/DemoContainer';
+import { Context } from './Context';
 
 function App() {
-  const [demoWidth, setDemoWidth] = useState(500);
-  const [demoHeight, setDemoHeight] = useState(500);
-  const [customSize, setCustomSize] = useState(false);
-  const [topLeft, setTopLeft] = useState('25');
-  const [topRight, setTopRight] = useState('75');
-  const [leftTop, setLeftTop] = useState('75');
-  const [leftBottom, setLeftBottom] = useState('25');
-  const [bottomLeft, setBottomLeft] = useState('25');
-  const [bottomRight, setBottomRight] = useState('75');
-  const [rightTop, setRightTop] = useState('75');
-  const [rightBottom, setRightBottom] = useState('25');
+  const [
+    demoWidth,
+    ,
+    demoHeight,
+    ,
+    ,
+    ,
+    topLeft,
+    ,
+    topRight,
+    ,
+    leftTop,
+    ,
+    leftBottom,
+    ,
+    bottomLeft,
+    ,
+    bottomRight,
+    ,
+    rightTop,
+    ,
+    rightBottom
+  ] = useContext(Context);
 
   useLayoutEffect(() => {
     document.getElementById(
@@ -47,43 +60,9 @@ function App() {
   return (
     <div className='App'>
       <h1>border radius previewer</h1>
-      <DemoContainer
-        topLeft={topLeft}
-        topRight={topRight}
-        bottomRight={bottomRight}
-        bottomLeft={bottomLeft}
-        leftTop={leftTop}
-        rightTop={rightTop}
-        rightBottom={rightBottom}
-        leftBottom={leftBottom}
-        setTopLeft={setTopLeft}
-        setTopRight={setTopRight}
-        setBottomRight={setBottomRight}
-        setBottomLeft={setBottomLeft}
-        setLeftTop={setLeftTop}
-        setRightTop={setRightTop}
-        setRightBottom={setRightBottom}
-        setLeftBottom={setLeftBottom}
-      />
-      <ExportContainer
-        topLeft={topLeft}
-        topRight={topRight}
-        bottomRight={bottomRight}
-        bottomLeft={bottomLeft}
-        leftTop={leftTop}
-        rightTop={rightTop}
-        rightBottom={rightBottom}
-        leftBottom={leftBottom}
-      />
-
-      <Form
-        customSize={customSize}
-        setDemoWidth={setDemoWidth}
-        setDemoHeight={setDemoHeight}
-        setCustomSize={setCustomSize}
-        demoHeight={demoHeight}
-        demoWidth={demoWidth}
-      />
+      <DemoContainer />
+      <ExportContainer />
+      <Form />
     </div>
   );
 }

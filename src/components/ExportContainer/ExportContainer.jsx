@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ExportContainer.scss';
+import { Context } from '../../Context';
 
-const ExportContainer = ({
-  topLeft,
-  topRight,
-  bottomRight,
-  bottomLeft,
-  leftTop,
-  rightTop,
-  rightBottom,
-  leftBottom
-}) => {
+const ExportContainer = () => {
+  const [
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    topLeft,
+    ,
+    topRight,
+    ,
+    leftTop,
+    ,
+    leftBottom,
+    ,
+    bottomLeft,
+    ,
+    bottomRight,
+    ,
+    rightTop,
+    ,
+    rightBottom
+  ] = useContext(Context);
   return (
     <div className='export-container'>
       <div id='code'>{`${topLeft}% ${100 - topRight}% ${100 -

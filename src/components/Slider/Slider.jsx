@@ -1,15 +1,15 @@
 import React from 'react';
 import './Slider.scss';
 
-const Slider = ({ id, radiusValue, setRadiusValue }) => {
+const Slider = ({ id, sliderValue, setSliderValue }) => {
   return (
     <input
       type='range'
       id={id}
       className='slider'
-      value={radiusValue}
+      value={sliderValue}
       onChange={({ target: { value } }) => {
-        setRadiusValue(value);
+        setSliderValue(value);
       }}
     />
   );

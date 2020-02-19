@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CustomSize from '../CustomSize/CustomSize';
 import './Form.scss';
+import { Context } from '../../Context';
 
-const Form = ({
-  customSize,
-  setDemoWidth,
-  setDemoHeight,
-  setCustomSize,
-  demoHeight,
-  demoWidth
-}) => {
+const Form = () => {
+  const [
+    ,
+    setDemoWidth,
+    ,
+    setDemoHeight,
+    customSize,
+    setCustomSize
+  ] = useContext(Context);
   return (
     <div className='form'>
       <div className='size-control'>
@@ -27,12 +29,7 @@ const Form = ({
         />
       </div>
       {customSize && (
-        <CustomSize
-          demoHeight={demoHeight}
-          demoWidth={demoWidth}
-          setDemoHeight={setDemoHeight}
-          setDemoWidth={setDemoWidth}
-        />
+        <CustomSize setDemoHeight={setDemoHeight} setDemoWidth={setDemoWidth} />
       )}
     </div>
   );

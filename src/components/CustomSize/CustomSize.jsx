@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputForm from '../Inputform/InputForm';
+import { Context } from '../../Context';
 
-const CustomSize = ({ demoWidth, demoHeight, setDemoWidth, setDemoHeight }) => {
+const CustomSize = () => {
+  const [demoWidth, setDemoWidth, demoHeight, setDemoHeight] = useContext(
+    Context
+  );
   return (
     <div className='demo-size'>
       <InputForm title='width' demo={demoWidth} setDemo={setDemoWidth} />
