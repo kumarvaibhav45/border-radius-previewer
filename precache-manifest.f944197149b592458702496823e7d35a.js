@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8bb1cc55628ea814c4dc2ef5895334ad",
+    "revision": "8c92fccdfbea4b5533e43b1fbc72a21e",
     "url": "/border-radius-previewer/index.html"
   },
   {
-    "revision": "baad0a8ae35ca2147041",
+    "revision": "c8f40186b297ba7f62d9",
     "url": "/border-radius-previewer/static/css/main.0a08a8d9.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/border-radius-previewer/static/js/2.e52ae0f9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "baad0a8ae35ca2147041",
-    "url": "/border-radius-previewer/static/js/main.e2914be9.chunk.js"
+    "revision": "c8f40186b297ba7f62d9",
+    "url": "/border-radius-previewer/static/js/main.e5879ffb.chunk.js"
   },
   {
     "revision": "ab0bea932b458f82dba0",
