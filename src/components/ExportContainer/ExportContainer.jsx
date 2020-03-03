@@ -1,31 +1,21 @@
 import React, { useContext } from 'react';
 import './ExportContainer.scss';
-import { Context } from '../../Context';
+import { GlobalState } from '../../context/GlobalState';
 
 const ExportContainer = () => {
-  const [
-    ,
-    ,
-    ,
-    ,
-    ,
-    ,
-    topLeft,
-    ,
-    topRight,
-    ,
-    leftTop,
-    ,
-    leftBottom,
-    ,
-    bottomLeft,
-    ,
-    bottomRight,
-    ,
-    rightTop,
-    ,
-    rightBottom
-  ] = useContext(Context);
+  const {
+    borderRadius: {
+      topLeft,
+      topRight,
+      leftTop,
+      leftBottom,
+      bottomLeft,
+      bottomRight,
+      rightBottom,
+      rightTop
+    }
+  } = useContext(GlobalState);
+  
   return (
     <div className='export-container'>
       <div id='code'>{`${topLeft}% ${100 - topRight}% ${100 -

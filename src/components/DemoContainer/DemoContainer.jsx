@@ -1,36 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import Slider from '../Slider/Slider';
 import './DemoContainer.scss';
-import { Context } from '../../Context';
+import { GlobalState } from '../../context/GlobalState';
 
 const DemoContainer = () => {
-  const [
-    ,
-    ,
-    ,
-    ,
-    ,
-    ,
-    topLeft,
-    setTopLeft,
-    topRight,
-    setTopRight,
-    leftTop,
-    setLeftTop,
-    leftBottom,
-    setLeftBottom,
-    bottomLeft,
+  const {
+    demoHeight,
+    demoWidth,
+    borderRadius: {
+      topLeft,
+      topRight,
+      bottomLeft,
+      bottomRight,
+      leftTop,
+      leftBottom,
+      rightTop,
+      rightBottom
+    },
     setBottomLeft,
-    bottomRight,
     setBottomRight,
-    rightTop,
+    setLeftBottom,
+    setLeftTop,
+    setRightBottom,
     setRightTop,
-    rightBottom,
-    setRightBottom
-  ] = useContext(Context);
+    setTopLeft,
+    setTopRight
+  } = useContext(GlobalState);
+  useLayoutEffect(() => {
+    document.documentElement.style.setProperty(
+      '--container-height',
+      demoHeight + 'px'
+    );
+    document.documentElement.style.setProperty(
+      '--container-width',
+      demoWidth + 'px'
+    );
+  }, [demoHeight, demoWidth]);
   return (
     <div className='demo-container'>
-      <div className='demo' id='demo-cont'></div>
+      <div
+        className='demo'
+        id='demo-cont'
+        style={{
+          borderRadius: `${topLeft}% ${100 - topRight}% ${100 -
+            bottomRight}% ${bottomLeft}%/ ${100 - leftTop}% ${100 -
+            rightTop}% ${rightBottom}% ${leftBottom}%`
+        }}
+      ></div>
       <Slider
         id='slider-top-left'
         sliderValue={topLeft}

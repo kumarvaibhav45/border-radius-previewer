@@ -2,13 +2,12 @@ import React from 'react';
 import './InputForm.scss';
 
 const InputForm = ({ title, demo, setDemo }) => {
-  
   return (
     <>
       <label htmlFor={title}>{title} :</label>
       <input
         type='number'
-        value={demo}
+        value={demo || 0}
         min='5'
         max='2000'
         name={title}
